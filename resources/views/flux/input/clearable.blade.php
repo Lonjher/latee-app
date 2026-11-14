@@ -6,6 +6,12 @@
 ])
 
 @php
+$iconSize = match ($size) {
+    'xs' => 'size-3!',
+    'sm' => 'size-3.5!',
+    default => 'size-4!',
+};
+
 $attributes = $attributes->merge([
     'variant' => 'subtle',
     'class' => '-me-1 [[data-flux-input]:has(input:placeholder-shown)_&]:hidden [[data-flux-input]:has(input[disabled])_&]:hidden',
@@ -23,5 +29,5 @@ $attributes = $attributes->merge([
     aria-label="{{ __('Clear input') }}"
     data-flux-clear-button
 >
-    <flux:icon.x-mark :variant="$iconVariant" />
+    <flux:icon.x-mark :variant="$iconVariant" class="{{ $iconSize }}" />
 </flux:button>

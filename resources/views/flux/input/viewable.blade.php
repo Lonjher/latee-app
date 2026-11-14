@@ -6,6 +6,12 @@
 ])
 
 @php
+$iconSize = match ($size) {
+    'xs' => 'size-3!',
+    'sm' => 'size-3.5!',
+    default => 'size-4!',
+};
+
 $attributes = $attributes->merge([
     'variant' => 'subtle',
     'class' => '-me-1',
@@ -22,6 +28,6 @@ $attributes = $attributes->merge([
     x-bind:data-viewable-open="open"
     aria-label="{{ __('Toggle password visibility') }}"
 >
-    <flux:icon.eye-slash :variant="$iconVariant" class="hidden [[data-viewable-open]>&]:block" />
-    <flux:icon.eye :variant="$iconVariant" class="block [[data-viewable-open]>&]:hidden" />
+    <flux:icon.eye-slash :variant="$iconVariant" class="{{ $iconSize }} hidden [[data-viewable-open]>&]:block" />
+    <flux:icon.eye :variant="$iconVariant" class="{{ $iconSize }} block [[data-viewable-open]>&]:hidden" />
 </flux:button>

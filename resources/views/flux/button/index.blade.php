@@ -57,7 +57,7 @@ $isColored = $color
     && ! in_array($color, ['slate', 'gray', 'zinc', 'neutral', 'stone', 'mauve', 'olive', 'mist', 'taupe'], true);
 
 $classes = Flux::classes()
-    ->add('relative items-center font-semibold justify-center whitespace-nowrap')
+    ->add('hover:-translate-y-0.5 cursor-pointer relative items-center font-semibold justify-center whitespace-nowrap')
     ->add('transition-all duration-300')
     // Focus ring aksesibel untuk kedua mode
     ->add('focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500 focus-visible:ring-offset-white dark:focus-visible:ring-brand-400 dark:focus-visible:ring-offset-slate-900')
@@ -109,7 +109,7 @@ $classes = Flux::classes()
         $isColored && $variant === 'ghost' => 'bg-transparent hover:bg-[color-mix(in_oklab,_var(--color-button-soft),_transparent_80%)] active:bg-[color-mix(in_oklab,_var(--color-button-soft),_transparent_70%)] dark:hover:bg-[color-mix(in_oklab,_var(--color-button-soft),_transparent_60%)] dark:active:bg-[color-mix(in_oklab,_var(--color-button-soft),_transparent_50%)]',
         $isColored && $variant === 'subtle' => 'bg-transparent hover:bg-(--color-button-tint) dark:hover:bg-[color-mix(in_oklab,_var(--color-button-deep),_transparent_28%)]',
         default => match ($variant) {
-            'primary' => 'bg-[var(--color-accent)] hover:bg-[color-mix(in_oklab,var(--color-accent),transparent_10%)] hover:-translate-y-0.5 shadow-lg shadow-[color-mix(in_oklab,var(--color-accent),transparent_75%)]',
+            'primary' => 'bg-[var(--color-accent)] hover:bg-[color-mix(in_oklab,var(--color-accent),transparent_10%)] shadow-lg shadow-[color-mix(in_oklab,var(--color-accent),transparent_75%)]',
             'filled' => 'bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/20',
             'outline' => 'bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 dark:hover:bg-slate-700 dark:hover:border-slate-600',
             'danger' => 'bg-rose-600 hover:bg-rose-700 shadow-lg shadow-rose-500/25 dark:bg-rose-500 dark:hover:bg-rose-400 dark:shadow-rose-400/20',

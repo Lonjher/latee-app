@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class page-header extends Component
+class action-menu.item extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class page-header extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.page-header');
+        return view('components.action-menu.item');
     }
 }

@@ -34,7 +34,6 @@
 ])
 
 @php
-
 $inputAttributes = Flux::attributesAfter('input:', $attributes, []);
 
 $wireModel = $attributes->wire('model');
@@ -64,23 +63,62 @@ $countOfTrailingIcons = collect([
     (bool) $expandable,
 ])->filter()->count();
 
+// ═══════════════════════════════════════════════════════════════
+// ICON SIZE & PADDING — proporsional per input size
+// ═══════════════════════════════════════════════════════════════
+
+// Icon leading/trailing: 12 / 16 / 20 px
+$iconSizeClasses = match ($size) {
+    'xs' => 'size-3!',
+    'md' => 'size-5!',
+    default => 'size-4!',
+};
+
+// Posisi icon dari tepi input
+$iconLeadingInset = match ($size) {
+    'xs' => 'ps-2.5',
+    'md' => 'ps-4',
+    default => 'ps-3.5',
+};
+
+$trailingInset = match ($size) {
+    'xs' => 'pe-2.5',
+    'md' => 'pe-4',
+    default => 'pe-3.5',
+};
+
+// Padding text saat ada leading icon
+$iconLeadingTextPadding = match ($size) {
+    'xs' => 'ps-7',
+    'md' => 'ps-11',
+    default => 'ps-9',
+};
+
+// Padding kanan per jumlah trailing + ukuran input
+$trailingPadding = fn (int $count) => match ($count) {
+    0 => match ($size) { 'xs' => 'pe-2.5', 'md' => 'pe-4',   default => 'pe-4' },
+    1 => match ($size) { 'xs' => 'pe-7',   'md' => 'pe-11',  default => 'pe-9' },
+    2 => match ($size) { 'xs' => 'pe-11',  'md' => 'pe-18',  default => 'pe-14' },
+    3 => match ($size) { 'xs' => 'pe-15',  'md' => 'pe-25',  default => 'pe-19' },
+    4 => match ($size) { 'xs' => 'pe-19',  'md' => 'pe-32',  default => 'pe-24' },
+    5 => match ($size) { 'xs' => 'pe-23',  'md' => 'pe-39',  default => 'pe-29' },
+    6 => match ($size) { 'xs' => 'pe-27',  'md' => 'pe-46',  default => 'pe-34' },
+    default => 'pe-4',
+};
+
 $iconClasses = Flux::classes()
-    ->add($iconVariant === 'outline' ? 'size-5' : '')
+    ->add($iconSizeClasses)
+    ->add($attributes->pluck('icon:class'))
     ;
 
 $inputLoadingClasses = Flux::classes()
-    ->add(match ($countOfTrailingIcons) {
-        0 => 'pe-10', 1 => 'pe-16', 2 => 'pe-23', 3 => 'pe-30',
-        4 => 'pe-37', 5 => 'pe-44', 6 => 'pe-51',
-    })
+    ->add($trailingPadding($countOfTrailingIcons + 1))
     ;
 
 $classes = Flux::classes()
     ->add('w-full border block disabled:shadow-none dark:shadow-none')
     ->add('appearance-none')
-    // ✅ OUTLINE + TRANSITION (persis contoh)
     ->add('outline-none transition-all')
-    // ✅ SHADOW: `shadow` (persis contoh — bukan shadow-xs)
     ->add('shadow')
     ->add(match ($size) {
         default => 'text-sm rounded-full py-2',
@@ -88,32 +126,22 @@ $classes = Flux::classes()
         'xs'    => 'text-xs rounded-full py-1.5',
     })
     ->add(match ($hasLeadingIcon) {
-        true  => 'ps-11',
-        false => 'ps-4',
+        true  => $iconLeadingTextPadding,
+        false => match ($size) { 'xs' => 'ps-3', default => 'ps-4' },
     })
-    ->add(match ($countOfTrailingIcons) {
-        0 => 'pe-4', 1 => 'pe-10', 2 => 'pe-16', 3 => 'pe-23',
-        4 => 'pe-30', 5 => 'pe-37', 6 => 'pe-44',
-    })
-    // BACKGROUND: default PUTIH, hover tema-50, focus kembali putih
+    ->add($trailingPadding($countOfTrailingIcons))
     ->add(match ($variant) {
         'outline' => "bg-white dark:bg-slate-900 focus:bg-white dark:focus:bg-slate-900 disabled:bg-slate-100 dark:disabled:bg-slate-800/50",
         'filled'  => "bg-slate-100 dark:bg-slate-800 focus:bg-white dark:focus:bg-slate-900",
     })
-    // Text + placeholder
     ->add(match ($variant) {
         'outline' => 'text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:text-slate-400 dark:disabled:text-slate-500',
         'filled'  => 'text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400',
     })
-    // ✅ BORDER + FOCUS — PERSIS SEPERTI CONTOH:
-    //    - border default: slate-200 / slate-700
-    //    - focus border: {color}-500
-    //    - focus ring: ring-3 + {color}-200/50, dark: {color}-500/20
     ->add(match ($variant) {
         'outline' => "border-slate-200 dark:border-slate-700 focus:border-{$colorTheme}-500 focus:ring-3 focus:ring-{$colorTheme}-200/50 dark:focus:ring-{$colorTheme}-500/20",
         'filled'  => "border-0 focus:ring-3 focus:ring-{$colorTheme}-200/50 dark:focus:ring-{$colorTheme}-500/20",
     })
-    // Invalid state
     ->add(match ($variant) {
         'outline' => 'data-invalid:border-red-400 dark:data-invalid:border-red-400 data-invalid:ring-3 data-invalid:ring-red-300/40 dark:data-invalid:ring-red-400/30 disabled:data-invalid:border-red-400',
         'filled'  => 'data-invalid:border-red-400'
@@ -130,11 +158,11 @@ $classes = Flux::classes()
     <flux:with-field :$attributes :$name>
         <div {{ $attributes->only('class')->class('w-full relative block group/input') }} data-flux-input>
             <?php if (is_string($iconLeading) && $iconLeading !== ''): ?>
-                <div class="pointer-events-none absolute top-0 bottom-0 border-s border-transparent flex items-center justify-center text-slate-400 dark:text-slate-500 ps-4 start-0 transition-colors group-focus-within:text-{{ $colorTheme }}-500 dark:group-focus-within:text-{{ $colorTheme }}-400">
+                <div class="pointer-events-none absolute top-0 bottom-0 border-s border-transparent flex items-center justify-center text-slate-400 dark:text-slate-500 {{ $iconLeadingInset }} start-0 transition-colors group-focus-within:text-{{ $colorTheme }}-500 dark:group-focus-within:text-{{ $colorTheme }}-400">
                     <flux:icon :icon="$iconLeading" :variant="$iconVariant" :class="$iconClasses" />
                 </div>
             <?php elseif ($iconLeading): ?>
-                <div {{ $iconLeading->attributes->class("absolute top-0 bottom-0 border-s border-transparent flex items-center justify-center text-slate-400 dark:text-slate-500 ps-4 start-0 transition-colors group-focus-within:text-{$colorTheme}-500 dark:group-focus-within:text-{$colorTheme}-400") }}>
+                <div {{ $iconLeading->attributes->class("absolute top-0 bottom-0 border-s border-transparent flex items-center justify-center text-slate-400 dark:text-slate-500 {$iconLeadingInset} start-0 transition-colors group-focus-within:text-{$colorTheme}-500 dark:group-focus-within:text-{$colorTheme}-400") }}>
                     {{ $iconLeading }}
                 </div>
             <?php endif; ?>
@@ -157,7 +185,7 @@ $classes = Flux::classes()
             >
 
             <?php if ($loading || $countOfTrailingIcons > 0): ?>
-                <div class="absolute top-0 bottom-0 flex items-center gap-x-1.5 pe-2 border-e border-transparent end-0 text-xs text-slate-400 dark:text-slate-500">
+                <div class="absolute top-0 bottom-0 flex items-center gap-x-1.5 {{ $trailingInset }} end-0 text-slate-400 dark:text-slate-500">
                     <?php if ($loading): ?>
                         <flux:icon name="loading" :variant="$iconVariant" :class="$iconClasses" wire:loading :wire:target="$wireTarget" />
                     <?php endif; ?>
@@ -192,11 +220,11 @@ $classes = Flux::classes()
 <?php else: ?>
     <button {{ $attributes->merge(['type' => 'button'])->class([$classes, 'w-full relative flex']) }}>
         <?php if (is_string($iconLeading) && $iconLeading !== ''): ?>
-            <div class="absolute top-0 bottom-0 flex items-center justify-center text-slate-400 dark:text-slate-500 ps-4 start-0">
+            <div class="absolute top-0 bottom-0 flex items-center justify-center text-slate-400 dark:text-slate-500 {{ $iconLeadingInset }} start-0">
                 <flux:icon :icon="$iconLeading" :variant="$iconVariant" :class="$iconClasses" />
             </div>
         <?php elseif ($iconLeading): ?>
-            <div {{ $iconLeading->attributes->class('absolute top-0 bottom-0 flex items-center justify-center text-slate-400 dark:text-slate-500 ps-4 start-0') }}>
+            <div {{ $iconLeading->attributes->class("absolute top-0 bottom-0 flex items-center justify-center text-slate-400 dark:text-slate-500 {$iconLeadingInset} start-0") }}>
                 {{ $iconLeading }}
             </div>
         <?php endif; ?>
@@ -212,17 +240,17 @@ $classes = Flux::classes()
         <?php endif; ?>
 
         <?php if ($kbd): ?>
-            <div class="absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 pe-4 end-0">
+            <div class="absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 {{ $trailingInset }} end-0">
                 {{ $kbd }}
             </div>
         <?php endif; ?>
 
         <?php if (is_string($iconTrailing) && $iconTrailing !== ''): ?>
-            <div class="absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 pe-4 end-0">
+            <div class="absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 {{ $trailingInset }} end-0">
                 <flux:icon :icon="$iconTrailing" :variant="$iconVariant" :class="$iconClasses" />
             </div>
         <?php elseif ($iconTrailing): ?>
-            <div {{ $iconTrailing->attributes->class('absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 pe-3 end-0') }}>
+            <div {{ $iconTrailing->attributes->class("absolute top-0 bottom-0 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500 {$trailingInset} end-0") }}>
                 {{ $iconTrailing }}
             </div>
         <?php endif; ?>

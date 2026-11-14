@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class modal-hapus extends Component
+class action-menu.seperator extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class modal-hapus extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.modal-hapus');
+        return view('components.action-menu.seperator');
     }
 }

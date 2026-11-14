@@ -61,7 +61,7 @@
 
                 @role('admin')
                     <flux:sidebar.group :heading="__('Administrasi')" class="grid mt-6">
-                        <flux:sidebar.item icon="users" href="{{ route('admin.manage-users') }}" :current="request()->routeIs('users.*')"
+                        <flux:sidebar.item icon="users" href="{{ route('admin.manage-users') }}" :current="request()->is('admin/manage-users*')"
                             wire:navigate>
                             {{ __('Pengguna') }}
                         </flux:sidebar.item>
