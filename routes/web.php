@@ -48,6 +48,7 @@ Route::view('blogs/show', 'blogs.show')->name('blogs.show');
 Route::view('blogs/index', 'blogs.index')->name('blogs.index');
 
 Route::middleware(['role:admin'])->group(function () {
+    Route::livewire('admin/manage-roles', 'admin.manage-roles')->name('admin.manage-roles');
     Route::livewire('admin/manage-users', 'admin.manage-users')->name('admin.manage-users');
 });
 
