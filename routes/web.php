@@ -50,6 +50,11 @@ Route::view('blogs/index', 'blogs.index')->name('blogs.index');
 Route::middleware(['role:admin'])->group(function () {
     Route::livewire('admin/manage-roles', 'admin.manage-roles')->name('admin.manage-roles');
     Route::livewire('admin/manage-users', 'admin.manage-users')->name('admin.manage-users');
+
+
+    Route::livewire('admin/manage-posts', 'admin.manage-posts')->name('admin.manage-posts');
+    Route::livewire('admin/posts/create', 'admin.posts.create')->name('admin.posts.create');
+    Route::livewire('admin/posts/{post}/edit', 'admin.posts.edit')->name('admin.posts.edit');
 });
 
 require __DIR__.'/settings.php';

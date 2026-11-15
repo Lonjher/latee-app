@@ -32,29 +32,27 @@ class UserSeeder extends Seeder
             }
         }
 
-        // 3 Pengasuh
-        $pengasuhs = [
-            ['full_name' => 'KH. Abdurrahman Wahid', 'email' => 'pengasuh1@annuqayahlatee.sch.id'],
-            ['full_name' => 'KH. Ahmad Zaini',       'email' => 'pengasuh2@annuqayahlatee.sch.id'],
-            ['full_name' => 'KH. Muhammad Bakir',    'email' => 'pengasuh3@annuqayahlatee.sch.id'],
+        $users = [
+            ['full_name' => 'Kamiluddin Zafi',      'email' => 'user1@annuqayahlatee.sch.id'],
+            ['full_name' => 'Habibuddin Alawi',  'email' => 'user@annuqayahlatee.sch.id'],
         ];
 
-        foreach ($pengasuhs as $data) {
+        foreach ($users as $data) {
             $user = User::firstOrCreate(
                 ['email' => $data['email']],
                 array_merge($data, [
                     'password'          => Hash::make('password'),
-                    'bio'               => 'Pengasuh PP. Annuqayah Latee.',
+                    'bio'               => 'User Satri Annuqayah Latee.',
                     'is_active'         => true,
                     'email_verified_at' => now(),
                 ])
             );
 
-            if (! $user->hasRole('pengasuh')) {
-                $user->assignRole('pengasuh');
+            if (! $user->hasRole('user')) {
+                $user->assignRole('user');
             }
         }
 
-        $this->command->info('👥 2 editor + 3 pengasuh siap.');
+        $this->command->info('👥 2 user siap.');
     }
 }

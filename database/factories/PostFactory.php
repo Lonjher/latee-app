@@ -18,10 +18,9 @@ class PostFactory extends Factory
             'user_id'        => User::factory(),
             'category_id'    => Category::factory(),
             'title'          => rtrim($title, '.'),
-            // slug di-generate oleh HasSlug
             'excerpt'        => Str::limit(strip_tags($content), 150),
             'content'        => $content,
-            'featured_image' => 'https://picsum.photos/seed/' . Str::random(8) . '/1200/675',
+            'featured_image' => null,
             'is_published'   => true,
             'is_featured'    => false,
             'published_at'   => now()->subDays(fake()->numberBetween(1, 90)),

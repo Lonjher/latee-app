@@ -77,7 +77,7 @@
                 @endrole
 
                 <flux:sidebar.group :heading="__('Konten')" class="grid mt-6">
-                    <flux:sidebar.item icon="document-text" href="#" :current="request()->routeIs('posts.*')"
+                    <flux:sidebar.item icon="document-text" href="{{ route('admin.manage-posts') }}" :current="request()->routeIs('posts.*')"
                         wire:navigate>
                         {{ __('Posts') }}
                     </flux:sidebar.item>
