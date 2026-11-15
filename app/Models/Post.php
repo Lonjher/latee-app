@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\HasSlug;
+use Arm092\RichTextEditor\Casts\RichTextCast;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -50,6 +51,7 @@ class Post extends Model
             'is_published' => 'boolean',
             'is_featured'  => 'boolean',
             'published_at' => 'datetime',
+            'content'      => RichTextCast::class,
         ];
     }
 

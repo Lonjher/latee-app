@@ -4,8 +4,87 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7ce2e0f265b8234e3f03b2b60d87ba8",
+    "content-hash": "b77daabba7aa746ae22215bc03976b88",
     "packages": [
+        {
+            "name": "arm092/laravel-rich-text-editor",
+            "version": "v1.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arm092/laravel-rich-text-editor.git",
+                "reference": "888adeba1b1db5f45b851b8689f164ff4b376233"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arm092/laravel-rich-text-editor/zipball/888adeba1b1db5f45b851b8689f164ff4b376233",
+                "reference": "888adeba1b1db5f45b851b8689f164ff4b376233",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "illuminate/contracts": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/database": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/validation": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/view": "^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.1",
+                "symfony/html-sanitizer": "^6.4|^7.0|^8.0"
+            },
+            "require-dev": {
+                "livewire/livewire": "^3.8|^4.3",
+                "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^10.5|^11.0|^12.0"
+            },
+            "suggest": {
+                "livewire/livewire": "Required only when binding the editor to Livewire 3 or 4 components."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Arm092\\RichTextEditor\\RichTextEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Arm092\\RichTextEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arman Khachatryan",
+                    "email": "arman.khachatryan.dev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A modern, secure rich text editor for Laravel, Alpine.js, Tailwind CSS, and Livewire.",
+            "homepage": "https://github.com/arm092/laravel-rich-text-editor",
+            "keywords": [
+                "alpinejs",
+                "editor",
+                "laravel",
+                "livewire",
+                "rich-text",
+                "tailwindcss",
+                "wysiwyg"
+            ],
+            "support": {
+                "issues": "https://github.com/arm092/laravel-rich-text-editor/issues",
+                "source": "https://github.com/arm092/laravel-rich-text-editor/tree/v1.3.11"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/arm092",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-29T19:34:53+00:00"
+        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "v3.1.1",
@@ -5198,6 +5277,78 @@
                 }
             ],
             "time": "2026-09-10T19:14:39+00:00"
+        },
+        {
+            "name": "symfony/html-sanitizer",
+            "version": "v8.1.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/html-sanitizer.git",
+                "reference": "1ecf13d98b75f5d8a2dcc1ffecde7184d29506ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/html-sanitizer/zipball/1ecf13d98b75f5d8a2dcc1ffecde7184d29506ef",
+                "reference": "1ecf13d98b75f5d8a2dcc1ffecde7184d29506ef",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "league/uri": "^6.5|^7.0",
+                "php": ">=8.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\HtmlSanitizer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Titouan Galopin",
+                    "email": "galopintitouan@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an object-oriented API to sanitize untrusted HTML input for safe insertion into a document's DOM.",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "Purifier",
+                "html",
+                "sanitizer"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/html-sanitizer/tree/v8.1.11"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-11-04T08:39:20+00:00"
         },
         {
             "name": "symfony/http-foundation",
