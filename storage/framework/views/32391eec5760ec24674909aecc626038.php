@@ -316,58 +316,32 @@
         <!-- ============================================ -->
         <!-- BEGIN: News & Blog                           -->
         <!-- ============================================ -->
-        <section class="py-16 md:py-20 bg-white dark:bg-slate-900 transition-colors duration-300" id="berita">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="reveal flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 md:mb-12 gap-4">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">Berita & Artikel</h2>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Informasi terkini dan tulisan seputar Annuqayah Latee</p>
-                    </div>
-                    <a href="<?php echo e(route('blogs.index')); ?>" class="inline-flex items-center gap-2 text-xs md:text-sm font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors group">
-                        <span>Lihat Semua</span>
-                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
-                    </a>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                    <article class="reveal delay-100 bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-                        <div class="relative h-56 md:h-60 overflow-hidden">
-                            <img alt="Kegiatan Pesantren" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1585036156171-384164a8c675?q=80&w=800&auto=format&fit=crop" />
-                            <div class="absolute top-4 left-4 bg-white/90 dark:bg-rose-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-rose-700 dark:text-rose-200 shadow-sm border border-rose-100 dark:border-rose-700">BERITA</div>
-                        </div>
-                        <div class="p-5 md:p-6 flex flex-col flex-grow">
-                            <span class="text-[10px] md:text-[11px] font-semibold text-slate-400 dark:text-slate-500 mb-2">12 Oktober 2024</span>
-                            <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Peringatan Haul Masyayikh ke-XX Berlangsung Khidmat</h3>
-                            <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-3">Ribuan santri dan alumni memadati area pesantren untuk mengikuti rangkaian acara haul yang dipenuhi dengan pembacaan manaqib dan tausiyah...</p>
-                            <a href="<?php echo e(route('blogs.show')); ?>" class="mt-auto inline-flex items-center gap-1 text-[11px] md:text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Baca Selengkapnya <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
-                        </div>
-                    </article>
-                    <article class="reveal delay-200 bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-                        <div class="relative h-56 md:h-60 overflow-hidden">
-                            <img alt="Prestasi Santri" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" />
-                            <div class="absolute top-4 left-4 bg-white/90 dark:bg-rose-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-rose-700 dark:text-rose-200 shadow-sm border border-rose-100 dark:border-rose-700">BERITA</div>
-                        </div>
-                        <div class="p-5 md:p-6 flex flex-col flex-grow">
-                            <span class="text-[10px] md:text-[11px] font-semibold text-slate-400 dark:text-slate-500 mb-2">10 Oktober 2024</span>
-                            <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Santri Latee Raih Juara 1 Lomba Pidato Bahasa Arab Tingkat Provinsi</h3>
-                            <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-3">Prestasi membanggakan kembali ditorehkan oleh santri Pondok Pesantren Annuqayah Latee dalam ajang kompetisi bahasa tingkat Jawa Timur...</p>
-                            <a href="<?php echo e(route('blogs.show')); ?>" class="mt-auto inline-flex items-center gap-1 text-[11px] md:text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Baca Selengkapnya <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
-                        </div>
-                    </article>
-                    <article class="reveal delay-300 bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-                        <div class="relative h-56 md:h-60 overflow-hidden">
-                            <img alt="Artikel Edukasi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop" />
-                            <div class="absolute top-4 left-4 bg-white/90 dark:bg-brand-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-brand-700 dark:text-brand-200 shadow-sm border border-brand-100 dark:border-brand-700">BLOG</div>
-                        </div>
-                        <div class="p-5 md:p-6 flex flex-col flex-grow">
-                            <span class="text-[10px] md:text-[11px] font-semibold text-slate-400 dark:text-slate-500 mb-2">05 Oktober 2024</span>
-                            <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-2">Menumbuhkan Jiwa Kepemimpinan Santri Melalui LDK</h3>
-                            <p class="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-3">Latihan Dasar Kepemimpinan (LDK) menjadi wadah bagi santri untuk mengasah kemampuan manajerial, public speaking, dan kerja sama tim...</p>
-                            <a href="<?php echo e(route('blogs.show')); ?>" class="mt-auto inline-flex items-center gap-1 text-[11px] md:text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Baca Selengkapnya <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('latest-posts', []);
+
+$__keyOuter = $__key ?? null;
+
+$__key = null;
+$__componentSlots = [];
+
+$__key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-2553903408-0', $__key);
+
+$__html = app('livewire')->mount($__name, $__params, $__key, $__componentSlots);
+
+echo $__html;
+
+unset($__html);
+unset($__key);
+$__key = $__keyOuter;
+unset($__keyOuter);
+unset($__name);
+unset($__params);
+unset($__componentSlots);
+unset($__split);
+?>
 
         <!-- ============================================ -->
         <!-- BEGIN: Testimonials                          -->

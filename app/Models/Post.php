@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $user_id
  * @property int|null $category_id
+ * @property-read string|null $type
  * @property string $title
  * @property string $slug
  * @property string|null $excerpt
@@ -32,13 +33,12 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read string|null $type
  * @property-read User $author
  * @property-read Category|null $category
  */
 #[Fillable([
     'user_id', 'category_id', 'title', 'slug',
-    'excerpt', 'content', 'featured_image',
+    'excerpt', 'content', 'featured_image', "type",
     'is_published', 'is_featured', 'published_at',
 ])]
 class Post extends Model

@@ -9,7 +9,7 @@
 ?>
 
 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(config('rich-text-editor.assets.auto', true)): ?>
-    <?php if (! $__env->hasRenderedOnce('3d6dcc55-b3ef-4754-8473-a5d382ec1353')): $__env->markAsRenderedOnce('3d6dcc55-b3ef-4754-8473-a5d382ec1353'); ?>
+    <?php if (! $__env->hasRenderedOnce('c900fc50-63c4-4c2d-b586-18a736b9c650')): $__env->markAsRenderedOnce('c900fc50-63c4-4c2d-b586-18a736b9c650'); ?>
         <?php
             $versionedAsset = static function (string $file) use ($assetPath, $assetSourcePath): string {
                 $published = public_path($assetPath.'/'.$file);

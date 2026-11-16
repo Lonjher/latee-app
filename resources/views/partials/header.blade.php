@@ -191,10 +191,18 @@
                 </svg>
             </button>
 
-            {{-- LOGIN --}}
-            <flux:button variant="primary" color="slate" size="base" href="{{ route('login') }}">
-                Login
-            </flux:button>
+            @auth
+                {{-- Dashboard --}}
+                <flux:button variant="primary" color="slate" size="base" href="{{ route('dashboard') }}">
+                    Dashboard
+                </flux:button>
+            @endauth
+            @guest
+                {{-- LOGIN --}}
+                <flux:button variant="primary" color="slate" size="base" href="{{ route('login') }}">
+                    Login
+                </flux:button>
+            @endguest
         </div>
     </div>
 </header>
