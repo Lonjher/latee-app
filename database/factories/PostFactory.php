@@ -17,6 +17,7 @@ class PostFactory extends Factory
         return [
             'user_id'        => User::factory(),
             'category_id'    => Category::factory(),
+            'type'           => fake()->randomElement(['news', 'article']),
             'title'          => rtrim($title, '.'),
             'excerpt'        => Str::limit(strip_tags($content), 150),
             'content'        => $content,
@@ -46,6 +47,7 @@ class PostFactory extends Factory
     public function news(): static
     {
         return $this->state(fn () => [
+            'type' => 'news',
             'category_id' => Category::factory()->ofType('news'),
         ]);
     }
@@ -53,6 +55,7 @@ class PostFactory extends Factory
     public function article(): static
     {
         return $this->state(fn () => [
+            'type' => 'article',
             'category_id' => Category::factory()->ofType('article'),
         ]);
     }
