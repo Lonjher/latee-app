@@ -50,50 +50,47 @@ new class extends Component {
             });
         }
     }" x-show="show" x-transition.opacity
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3 text-xs sm:p-4" x-cloak
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 text-xs sm:p-4 backdrop-blur-md" x-cloak
         @click.self="show = false">
 
-        <div class="flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-lg bg-white shadow-xl dark:bg-stone-900"
+        <div class="flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-2xl bg-white/95 dark:bg-[#070D18]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 shadow-2xl"
             @click.stop>
 
             <form wire:submit.prevent="resetPassword" class="flex min-h-0 flex-1 flex-col">
 
-                <div class="flex-shrink-0 space-y-3 p-4 pb-3">
-                    <div>
-                        <h3 class="text-sm font-semibold text-stone-800 dark:text-stone-100">{{ __('Reset Password') }}</h3>
-                        <p class="mt-0.5 text-[11px] leading-normal text-stone-500 dark:text-stone-400">{{ __('Buat password baru untuk pengguna ini.') }}</p>
-                    </div>
-                    <div class="border-t border-stone-100 dark:border-stone-800"></div>
+                <div class="flex-shrink-0 space-y-1.5 p-4 pb-3 border-b border-slate-200/80 dark:border-white/10 bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent dark:from-emerald-500/15 dark:via-teal-500/10 dark:to-transparent">
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">{{ __('Reset Password') }}</h3>
+                    <p class="text-[11px] leading-normal text-slate-500 dark:text-slate-400">{{ __('Buat password baru untuk pengguna ini.') }}</p>
                 </div>
 
-                <div class="min-h-0 flex-1 overflow-y-auto px-4">
+                <div class="min-h-0 flex-1 overflow-y-auto p-4">
                     <div x-show="errorMessage" x-cloak
-                        class="mb-2 rounded-md border border-red-200 bg-red-50 px-2.5 py-1.5 text-[11px] text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
+                        class="mb-3 rounded-xl border border-red-500/20 bg-red-500/10 px-3 py-2 text-[11px] text-red-700 dark:text-red-300"
                         x-text="errorMessage"></div>
 
-                    <div class="space-y-2.5 pb-4">
+                    <div class="space-y-3">
                         <div>
-                            <label class="mb-0.5 block text-[11px] font-medium text-stone-600 dark:text-stone-400">{{ __('Password Baru') }}</label>
+                            <label class="mb-1 block text-[11px] font-semibold text-slate-700 dark:text-slate-300">{{ __('Password Baru') }}</label>
                             <input wire:model="password" type="password" required
-                                class="w-full rounded-md border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-xs text-stone-800 placeholder:text-stone-400 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100" />
-                            @error('password')<p class="mt-0.5 text-[10px] text-red-500">{{ $message }}</p>@enderror
+                                class="w-full rounded-xl border border-slate-200/80 bg-slate-50/80 px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 transition-all" />
+                            @error('password')<p class="mt-1 text-[10px] text-red-500">{{ $message }}</p>@enderror
                         </div>
 
                         <div>
-                            <label class="mb-0.5 block text-[11px] font-medium text-stone-600 dark:text-stone-400">{{ __('Konfirmasi Password') }}</label>
+                            <label class="mb-1 block text-[11px] font-semibold text-slate-700 dark:text-slate-300">{{ __('Konfirmasi Password') }}</label>
                             <input wire:model="password_confirmation" type="password" required
-                                class="w-full rounded-md border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-xs text-stone-800 placeholder:text-stone-400 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100" />
+                                class="w-full rounded-xl border border-slate-200/80 bg-slate-50/80 px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 transition-all" />
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-shrink-0 justify-end gap-1.5 border-t border-stone-100 bg-white p-4 pt-3 dark:border-stone-800 dark:bg-stone-900">
+                <div class="flex flex-shrink-0 justify-end gap-2 border-t border-slate-200/80 bg-slate-50/80 p-4 pt-3 dark:border-white/10 dark:bg-[#070D18]/80 backdrop-blur-md">
                     <button type="button" @click="show = false"
-                        class="cursor-pointer rounded-md border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-600 transition hover:bg-stone-50 dark:border-stone-700 dark:text-stone-400 dark:hover:bg-stone-800">
+                        class="cursor-pointer rounded-xl border border-slate-200/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10 transition">
                         {{ __('Batal') }}
                     </button>
                     <button type="submit" wire:loading.attr="disabled" wire:target="resetPassword"
-                        class="bg-sage-600 hover:bg-sage-700 focus:ring-sage-500 dark:bg-sage-500 dark:hover:bg-sage-600 cursor-pointer rounded-md px-3 py-1.5 text-xs font-medium text-white transition focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+                        class="cursor-pointer rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-1.5 text-xs font-bold shadow-md shadow-emerald-900/20 dark:bg-emerald-500 dark:hover:bg-emerald-400 transition disabled:cursor-not-allowed disabled:opacity-60">
                         {{ __('Reset Password') }}
                     </button>
                 </div>

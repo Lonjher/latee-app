@@ -7,7 +7,7 @@ use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use App\Models\Post;
 
-new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Component {
+new #[Title('Berita & Artikel')] class extends Component {
     use WithPagination;
 
     public string $search = '';
@@ -57,20 +57,21 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
 
 <div>
     {{-- ═════════ HERO ═════════ --}}
-    <section class="relative w-full py-8 sm:py-12 md:py-20 px-4 md:px-6 overflow-hidden flex justify-center bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-        <div class="relative w-full max-w-[1400px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex items-center shadow-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 bg-texture-noise transition-colors duration-300">
+    <section class="relative w-full py-8 sm:py-12 md:py-20 px-4 md:px-6 overflow-hidden flex justify-center">
+        {{-- Ambient Aurora Glow Orbs --}}
+        <div class="glow-hero-emerald w-[500px] h-[500px] -top-20 -left-20 rounded-full"></div>
+        <div class="glow-hero-sapphire w-[500px] h-[500px] -bottom-20 -right-20 rounded-full"></div>
+
+        <div class="relative w-full max-w-[1400px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex items-center glass-card z-10">
             <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                <div class="absolute inset-0 bg-slate-50/50 dark:bg-slate-950/60"></div>
-                <div class="absolute top-0 -left-20 w-[400px] h-[400px] bg-brand-300/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-40 animate-pulse-glow dark:bg-brand-500/20"></div>
-                <div class="absolute -bottom-40 right-0 w-[400px] h-[400px] bg-brand-200/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-40 animate-pulse-glow dark:bg-teal-500/15" style="animation-delay: 2s;"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent dark:from-slate-900/90 dark:via-slate-900/60"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent dark:from-[#050B14]/70 dark:via-[#050B14]/40 dark:to-transparent"></div>
             </div>
             <div class="relative z-30 w-full px-6 sm:px-8 md:px-16 py-12 md:py-16 text-center">
                 <div class="reveal inline-flex items-center justify-center gap-3 mb-4">
-                    <span class="text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.2em] text-brand-700 dark:text-brand-300 uppercase bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm border border-brand-100 dark:border-brand-700">Warta Annuqayah Latee</span>
+                    <span class="aurora-badge inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-md">Warta Annuqayah Latee</span>
                 </div>
                 <h1 class="reveal delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1]">
-                    Berita & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-teal-600 dark:from-brand-300 dark:via-brand-400 dark:to-teal-300 animate-gradient-x text-gradient-animated">Artikel</span>
+                    Berita & <span class="aurora-gradient-text animate-gradient-x text-gradient-animated">Artikel</span>
                 </h1>
                 <p class="reveal delay-200 text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed">
                     Informasi terkini seputar kegiatan pesantren, prestasi santri, serta tulisan reflektif dan edukatif dari para kontributor.
@@ -80,7 +81,7 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
     </section>
 
     {{-- ═════════ FILTER & SEARCH ═════════ --}}
-    <section class="sticky top-16 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 py-4 shadow-sm transition-colors duration-300">
+    <section class="sticky top-16 z-40 floating-navbar py-4">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
 
@@ -95,17 +96,17 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                 </div>
 
                 {{-- Type Pills --}}
-                <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full w-full md:w-auto overflow-x-auto">
+                <div class="flex items-center bg-slate-200/50 dark:bg-white/5 p-1 rounded-full w-full md:w-auto overflow-x-auto border border-slate-200/60 dark:border-white/10">
                     <button type="button" wire:click="setType('')"
-                        class="px-3 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 {{ $type === '' ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white' }}">
+                        class="px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 cursor-pointer {{ $type === '' ? 'btn-primary-aurora shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
                         Semua
                     </button>
                     <button type="button" wire:click="setType('news')"
-                        class="px-3 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-1.5 {{ $type === 'news' ? 'bg-rose-500 dark:bg-rose-600 text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400' }}">
+                        class="px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-1.5 cursor-pointer {{ $type === 'news' ? 'bg-rose-500 text-white shadow-md shadow-rose-500/25' : 'text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400' }}">
                         <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Berita
                     </button>
                     <button type="button" wire:click="setType('artikel')"
-                        class="px-3 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-1.5 {{ $type === 'article' ? 'bg-brand-600 dark:bg-brand-500 text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400' }}">
+                        class="px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-1.5 cursor-pointer {{ $type === 'artikel' ? 'btn-primary-aurora shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400' }}">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> Artikel
                     </button>
                 </div>
@@ -123,12 +124,16 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
     </section>
 
     {{-- ═════════ BLOG GRID ═════════ --}}
-    <section class="py-12 md:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <section class="relative py-12 md:py-16 min-h-screen overflow-hidden">
+        {{-- Ambient Glow --}}
+        <div class="glow-education-teal w-[600px] h-[500px] top-1/4 -left-28 rounded-full opacity-35"></div>
+        <div class="glow-contact-gold w-[550px] h-[550px] bottom-1/4 -right-24 rounded-full opacity-30"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 md:px-6 z-10">
 
             <div wire:loading.flex wire:target="search,type,sort,setType" class="justify-center py-8">
-                <div class="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-900 px-4 py-2 shadow-md text-xs font-medium text-slate-600 dark:text-slate-300">
-                    <svg class="size-4 animate-spin text-brand-600 dark:text-brand-400" fill="none" viewBox="0 0 24 24">
+                <div class="inline-flex items-center gap-2 rounded-full glass-card px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+                    <svg class="size-4 animate-spin text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V12H4z"></path>
                     </svg>
@@ -147,21 +152,21 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                         $authorName = $post->author?->full_name ?? 'Redaksi';
                     @endphp
 
-                    <article wire:key="post-{{ $post->id }}" class="reveal group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative">
+                    <article wire:key="post-{{ $post->id }}" class="reveal group glass-card rounded-3xl overflow-hidden flex flex-col relative">
                         {{-- Image --}}
                         <div class="relative h-52 sm:h-56 overflow-hidden">
                             <img src="{{ $image }}" alt="{{ $post->title }}"
-                                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 dark:brightness-90"
+                                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                                 loading="lazy">
 
                             {{-- Type Badge --}}
                             <div class="absolute top-4 left-4">
                                 @if($primaryType === 'news')
-                                    <span class="inline-flex items-center gap-1.5 bg-white/95 dark:bg-rose-900/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold text-rose-600 dark:text-rose-200 shadow-sm border border-rose-100 dark:border-rose-700 uppercase tracking-wider">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Berita
+                                    <span class="inline-flex items-center gap-1.5 bg-rose-500/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold shadow-sm uppercase tracking-wider">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Berita
                                     </span>
                                 @else
-                                    <span class="inline-flex items-center gap-1.5 bg-white/95 dark:bg-brand-900/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold text-brand-600 dark:text-brand-200 shadow-sm border border-brand-100 dark:border-brand-700 uppercase tracking-wider">
+                                    <span class="aurora-badge inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold shadow-sm uppercase tracking-wider backdrop-blur-md">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> Artikel
                                     </span>
                                 @endif
@@ -170,7 +175,7 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                             {{-- Category --}}
                             @if($post->category)
                                 <div class="absolute bottom-4 right-4">
-                                    <span class="bg-slate-900/85 dark:bg-slate-950/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-medium text-white shadow-sm">
+                                    <span class="bg-slate-900/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-medium text-white shadow-sm border border-white/10">
                                         {{ $post->category->name }}
                                     </span>
                                 </div>
@@ -188,7 +193,7 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                                 </span>
                             </div>
 
-                            <h2 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 transition-colors {{ $primaryType === 'news' ? 'group-hover:text-rose-600 dark:group-hover:text-rose-400' : 'group-hover:text-brand-600 dark:group-hover:text-brand-400' }}">
+                            <h2 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
                                 {{ $post->title }}
                             </h2>
 
@@ -196,13 +201,13 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                                 {{ $post->excerpt ?: \Illuminate\Support\Str::limit(strip_tags($post->content), 140) }}
                             </p>
 
-                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="mt-auto flex items-center justify-between pt-4 border-t border-slate-200/50 dark:border-white/10">
                                 <span class="text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                     {{ $authorName }}
                                 </span>
                                 <a href="{{ route('blogs.show', $post->slug) }}" wire:navigate
-                                    class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-900 dark:text-white transition-colors group/btn {{ $primaryType === 'news' ? 'hover:text-rose-600 dark:hover:text-rose-400' : 'hover:text-brand-600 dark:hover:text-brand-400' }}">
+                                    class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors group/btn">
                                     Baca
                                     <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </a>
@@ -210,12 +215,12 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
                         </div>
                     </article>
                 @empty
-                    <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-16 md:py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800">
+                    <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-16 md:py-20 glass-card rounded-3xl">
                         <svg class="w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white">Tidak ada hasil ditemukan</h3>
                         <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">Coba ubah kata kunci atau filter pencarian Anda.</p>
                         <button type="button" wire:click="resetFilters"
-                            class="inline-block mt-4 text-xs md:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline">
+                            class="inline-block mt-4 text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer">
                             Reset Filter
                         </button>
                     </div>
@@ -231,4 +236,3 @@ new #[Title('Berita & Artikel')] #[Layout('layouts.guest')] class extends Compon
         </div>
     </section>
 </div>
-

@@ -13,7 +13,6 @@ class AdminUserSeeder extends Seeder
         $admin = User::firstOrCreate(
             ['email' => 'admin@annuqayahlatee.id'],
             [
-                'full_name'         => 'Administrator',
                 'password'          => Hash::make('password'),
                 'bio'               => 'Pengelola utama sistem informasi PP. Annuqayah Latee.',
                 'is_active'         => true,
@@ -25,6 +24,6 @@ class AdminUserSeeder extends Seeder
             $admin->assignRole('admin');
         }
 
-        $this->command->info('👑 Admin: admin@annuqayahlatee.sch.id / password');
+        $this->command->info('👑 Admin: admin@annuqayahlatee.id / password');
     }
 }

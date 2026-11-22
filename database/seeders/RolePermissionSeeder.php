@@ -45,11 +45,16 @@ class RolePermissionSeeder extends Seeder
             'gallery.view',
         ]);
 
+        $santri = Role::firstOrCreate(['name' => 'santri']);
+        $santri->syncPermissions([
+            'post.view', 'quote.view', 'gallery.view',
+        ]);
+
         $user = Role::firstOrCreate(['name' => 'user']);
         $user->syncPermissions([
             'post.view', 'quote.view', 'gallery.view',
         ]);
 
-        $this->command->info('✅ Roles & permissions siap.');
+        $this->command->info('✅ Roles & permissions siap (admin, editor, pengasuh, santri, user).');
     }
 }

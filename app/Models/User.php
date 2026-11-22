@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +18,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
- * @property string $full_name
  * @property string $email
  * @property string|null $avatar
  * @property string|null $bio
@@ -31,8 +31,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read string $full_name
+ * @property-read string $name
  */
-#[Fillable(['full_name', 'email', 'avatar', 'bio', 'is_active', 'password'])]
+#[Fillable(['email', 'avatar', 'bio', 'is_active', 'password'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -72,9 +74,54 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
+    public function santri(): HasOne
+    {
+        return $this->hasOne(Santri::class);
+    }
+
+    public function priest(): HasOne
+    {
+        return $this->hasOne(Priest::class);
+    }
+
     /* =========================================
-       HELPERS
+       ACCESSORS & HELPERS
        ========================================= */
+
+    /**
+     * Resolve full name dynamically from related profile model (Santri, Priest), or fallback to email.
+     */
+    public function getFullNameAttribute(): string
+    {
+        if ($this->relationLoaded('santri') && $this->santri) {
+            return $this->santri->full_name;
+        }
+
+        if ($this->relationLoaded('priest') && $this->priest) {
+            return $this->priest->full_name;
+        }
+
+        if ($this->santri) {
+            return $this->santri->full_name;
+        }
+
+        if ($this->priest) {
+            return $this->priest->full_name;
+        }
+
+        $emailPrefix = explode('@', $this->email)[0] ?? 'User';
+        return ucfirst(str_replace(['.', '_', '-'], ' ', $emailPrefix));
+    }
+
+    public function getNameAttribute(): string
+    {
+        return $this->full_name;
+    }
+
+    public function setFullNameAttribute(?string $value): void
+    {
+        // No-op: full_name is determined by role-specific profile models (Santri, Priest)
+    }
 
     /**
      * Get the user's initials
@@ -85,7 +132,7 @@ class User extends Authenticatable
 
         return Str::length($initials) > 1
             ? Str::substr($initials, 0, 1) . Str::substr($initials, -1)
-            : $initials;
+            : Str::upper(Str::substr($this->full_name, 0, 2));
     }
 
     public function isAdmin(): bool
@@ -103,8 +150,8 @@ class User extends Authenticatable
         return $this->hasRole('pengasuh');
     }
 
-    public function canManageContent(): bool
+    public function isSantri(): bool
     {
-        return $this->hasAnyRole(['admin', 'editor']);
+        return $this->hasRole('santri');
     }
 }

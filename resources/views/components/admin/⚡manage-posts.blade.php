@@ -92,43 +92,45 @@ new #[Title('Manage Posts')] class extends Component {
 };
 ?>
 
-<div>
-    <x-page-header title="Kelola Post" leading="Kelola artikel, berita, dan konten publikasi"/>
+<div class="space-y-4 w-full">
+    <div class="glass-card relative overflow-hidden rounded-2xl p-4 sm:p-5">
+        <x-page-header title="Kelola Artikel & Berita" leading="Tulis, kelola, dan publikasikan warta kegiatan Pondok Pesantren Annuqayah Latee" />
+    </div>
 
-    <div class="mx-auto mt-2 space-y-2">
+    <div class="space-y-4">
 
         @if (session('success'))
-            <div class="bg-sage-50 dark:bg-sage-950 border-sage-200 dark:border-sage-800 text-sage-700 dark:text-sage-300 flex items-center gap-2.5 rounded-xl border px-3 py-2 text-xs">
-                <svg class="size-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <div class="bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-300 flex items-center gap-2.5 rounded-xl border px-3.5 py-2.5 text-xs backdrop-blur-md">
+                <svg class="size-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-                {{ session('success') }}
+                <span class="font-semibold">{{ session('success') }}</span>
             </div>
         @endif
 
-        {{-- Stats --}}
+        {{-- Stats Overview Cards --}}
         <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-            <div class="rounded-xl border border-stone-200 bg-white px-3.5 py-3 dark:border-stone-800 dark:bg-stone-900">
-                <div class="text-[10px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">Total</div>
-                <div class="mt-1 text-xl font-bold text-stone-800 dark:text-stone-100">{{ $this->stats['total'] }}</div>
+            <div class="glass-card rounded-2xl p-3.5 flex flex-col justify-between">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Total Post</div>
+                <div class="mt-1 text-xl sm:text-2xl font-black text-slate-900 dark:text-white">{{ $this->stats['total'] }}</div>
             </div>
-            <div class="rounded-xl border border-stone-200 bg-white px-3.5 py-3 dark:border-stone-800 dark:bg-stone-900">
-                <div class="text-[10px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">Published</div>
-                <div class="mt-1 text-xl font-bold text-green-600 dark:text-green-400">{{ $this->stats['published'] }}</div>
+            <div class="glass-card rounded-2xl p-3.5 flex flex-col justify-between">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Published</div>
+                <div class="mt-1 text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">{{ $this->stats['published'] }}</div>
             </div>
-            <div class="rounded-xl border border-stone-200 bg-white px-3.5 py-3 dark:border-stone-800 dark:bg-stone-900">
-                <div class="text-[10px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">Draft</div>
-                <div class="mt-1 text-xl font-bold text-amber-600 dark:text-amber-400">{{ $this->stats['draft'] }}</div>
+            <div class="glass-card rounded-2xl p-3.5 flex flex-col justify-between">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Draft</div>
+                <div class="mt-1 text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400">{{ $this->stats['draft'] }}</div>
             </div>
-            <div class="rounded-xl border border-stone-200 bg-white px-3.5 py-3 dark:border-stone-800 dark:bg-stone-900">
-                <div class="text-[10px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">Bulan Ini</div>
-                <div class="mt-1 text-xl font-bold text-sage-600 dark:text-sage-400">{{ $this->stats['this_month'] }}</div>
+            <div class="glass-card rounded-2xl p-3.5 flex flex-col justify-between">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Bulan Ini</div>
+                <div class="mt-1 text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">{{ $this->stats['this_month'] }}</div>
             </div>
         </div>
 
-        {{-- Filter --}}
-        <div class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 dark:border-stone-800 dark:bg-stone-900">
-            <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+        {{-- Filter Bar --}}
+        <div class="glass-card rounded-2xl p-3 sm:p-4">
+            <div class="flex flex-col gap-2.5 sm:flex-row sm:items-center">
                 <div class="flex w-full gap-2 sm:w-[50%]">
                     <flux:input
                         size="xs"
@@ -139,7 +141,7 @@ new #[Title('Manage Posts')] class extends Component {
                     />
                     @if ($search || $statusFilter)
                         <button wire:click="clearFilters" title="Reset"
-                            class="grid size-9 shrink-0 place-items-center rounded-lg border border-stone-200 bg-white text-stone-500 transition hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800">
+                            class="grid size-9 shrink-0 place-items-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-500 transition hover:bg-white hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-emerald-400 cursor-pointer shadow-xs">
                             <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
@@ -157,7 +159,7 @@ new #[Title('Manage Posts')] class extends Component {
                 </div>
 
                 <a href="{{ route('admin.posts.create') }}" wire:navigate
-                    class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-sage-600 px-3.5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-sage-700 dark:bg-sage-500 dark:hover:bg-sage-600">
+                    class="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 text-xs font-bold shadow-sm shadow-emerald-900/10 transition sm:ms-auto">
                     <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
@@ -166,13 +168,13 @@ new #[Title('Manage Posts')] class extends Component {
             </div>
         </div>
 
-        {{-- Table --}}
-        <div class="overflow-hidden rounded-xl border border-stone-200 bg-white px-3 dark:border-stone-800 dark:bg-stone-900">
-            <div class="flex items-center justify-between border-b border-stone-100 py-2 dark:border-stone-800">
-                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">
+        {{-- Table Card --}}
+        <div class="glass-card rounded-2xl p-3 sm:p-4 overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-200/70 dark:border-white/10 pb-2.5 mb-2.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     {{ $posts->total() }} post ditemukan
                 </span>
-                <div wire:loading class="text-sage-600 dark:text-sage-400 flex items-center gap-1 text-[11px]">
+                <div wire:loading class="text-emerald-600 dark:text-emerald-400 flex items-center gap-1 text-[11px] font-semibold">
                     <svg class="size-3 animate-spin" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
@@ -181,38 +183,38 @@ new #[Title('Manage Posts')] class extends Component {
                 </div>
             </div>
 
-            <div class="overflow-x-auto rounded-xl border bg-white shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <div class="overflow-x-auto rounded-xl border border-slate-200/70 dark:border-white/10">
                 <table x-data class="w-full border-collapse text-left text-xs">
                     <thead>
-                        <tr class="border-b border-stone-200 bg-stone-50 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-400">
-                            <th class="w-8 px-2.5 py-1.5 text-center">#</th>
-                            <th class="px-2.5 py-1.5">Post</th>
-                            <th class="w-32 px-2.5 py-1.5">Kategori</th>
-                            <th class="w-28 px-2.5 py-1.5">Author</th>
-                            <th class="w-24 px-2.5 py-1.5 text-center">Status</th>
-                            <th class="w-28 px-2.5 py-1.5">Tanggal</th>
-                            <th class="w-14 px-2.5 py-1.5 text-right">Aksi</th>
+                        <tr class="border-b border-slate-200/80 bg-slate-100/90 dark:border-white/10 dark:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                            <th class="w-8 px-3 py-2 text-center">#</th>
+                            <th class="px-3 py-2">Post</th>
+                            <th class="w-32 px-3 py-2">Kategori</th>
+                            <th class="w-28 px-3 py-2">Author</th>
+                            <th class="w-24 px-3 py-2 text-center">Status</th>
+                            <th class="w-28 px-3 py-2">Tanggal</th>
+                            <th class="w-14 px-3 py-2 text-right">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
+                    <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px]">
                         @forelse ($posts as $post)
                             @php
                                 $imgUrl = $post->featured_image
                                     ? (Str::startsWith($post->featured_image, 'http') ? $post->featured_image : Storage::url($post->featured_image))
                                     : null;
                             @endphp
-                            <tr class="transition-colors hover:bg-stone-50 dark:hover:bg-stone-800/30">
-                                <td class="px-2.5 py-1.5 text-center text-xs text-stone-400 dark:text-stone-600">
+                            <tr class="group transition-colors hover:bg-emerald-500/5">
+                                <td class="px-3 py-2 text-center text-xs text-slate-400 dark:text-slate-500">
                                     {{ $loop->iteration + ($posts->currentPage() - 1) * $posts->perPage() }}
                                 </td>
 
-                                <td class="px-2.5 py-1.5">
-                                    <div class="flex items-center gap-2">
+                                <td class="px-3 py-2">
+                                    <div class="flex items-center gap-2.5">
                                         @if ($imgUrl)
                                             <img src="{{ $imgUrl }}" alt="{{ $post->title }}"
-                                                class="size-10 shrink-0 rounded-lg border border-stone-200 object-cover dark:border-stone-700" />
+                                                class="size-10 shrink-0 rounded-lg border border-slate-200/80 dark:border-white/10 object-cover" />
                                         @else
-                                            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-stone-100 text-stone-400 dark:bg-stone-800 dark:text-stone-500">
+                                            <div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                                                 <svg class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M2.25 6.75h.008v.008H2.25V6.75Z" />
                                                 </svg>
@@ -220,47 +222,47 @@ new #[Title('Manage Posts')] class extends Component {
                                         @endif
                                         <div class="min-w-0">
                                             <div class="flex items-center gap-1.5">
-                                                <span class="truncate text-xs font-medium text-stone-800 dark:text-stone-200">{{ $post->title }}</span>
+                                                <span class="truncate text-xs font-bold text-slate-900 dark:text-white">{{ $post->title }}</span>
                                                 @if ($post->is_featured)
-                                                    <span class="shrink-0 rounded-full bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-600 dark:bg-amber-950/40 dark:text-amber-400">Featured</span>
+                                                    <span class="shrink-0 rounded-full bg-amber-500/15 border border-amber-500/20 px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">Featured</span>
                                                 @endif
                                             </div>
-                                            <div class="truncate text-[10px] text-stone-500 dark:text-stone-500">/{{ $post->slug }}</div>
+                                            <div class="truncate text-[10px] text-slate-500 dark:text-slate-400">/{{ $post->slug }}</div>
                                         </div>
                                     </div>
                                 </td>
 
-                                <td class="px-2.5 py-1.5">
+                                <td class="px-3 py-2">
                                     @if ($post->category)
-                                        <span class="inline-flex items-center rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
+                                        <span class="inline-flex items-center rounded-full bg-slate-100 dark:bg-white/10 border border-slate-200/60 dark:border-white/10 px-2 py-0.5 text-[10px] font-medium text-slate-700 dark:text-slate-300">
                                             {{ $post->category->name }}
                                         </span>
                                     @else
-                                        <span class="text-[10px] italic text-stone-400 dark:text-stone-500">—</span>
+                                        <span class="text-[10px] italic text-slate-400 dark:text-slate-500">—</span>
                                     @endif
                                 </td>
 
-                                <td class="px-2.5 py-1.5">
-                                    <div class="truncate text-xs text-stone-700 dark:text-stone-300">
+                                <td class="px-3 py-2">
+                                    <div class="truncate text-xs text-slate-700 dark:text-slate-300 font-medium">
                                         {{ $post->author?->full_name ?? '—' }}
                                     </div>
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-center">
+                                <td class="px-3 py-2 text-center">
                                     @if ($post->is_published)
-                                        <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-semibold text-green-700 dark:bg-green-950/40 dark:text-green-400">Published</span>
+                                        <span class="inline-flex items-center rounded-full bg-emerald-500/15 border border-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300">Published</span>
                                     @else
-                                        <span class="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-700 dark:bg-amber-950/40 dark:text-amber-400">Draft</span>
+                                        <span class="inline-flex items-center rounded-full bg-amber-500/15 border border-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">Draft</span>
                                     @endif
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-[11px] text-stone-500 dark:text-stone-400">
+                                <td class="px-3 py-2 text-[10px] text-slate-500 dark:text-slate-400">
                                     {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? '—' }}
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-right">
+                                <td class="px-3 py-2 text-right">
                                     <x-action-menu>
-                                        <x-action-menu.item icon="pencil-square" color="sage"
+                                        <x-action-menu.item icon="pencil-square" color="emerald"
                                             x-on:click="window.location.href = '{{ route('admin.posts.edit', $post) }}'">
                                             Edit
                                         </x-action-menu.item>
@@ -287,11 +289,11 @@ new #[Title('Manage Posts')] class extends Component {
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="px-2.5 py-10 text-center">
-                                    <div class="flex flex-col items-center gap-1.5 text-stone-400">
+                                <td colspan="7" class="px-3 py-10 text-center">
+                                    <div class="flex flex-col items-center gap-1.5 text-slate-400">
                                         <p class="text-xs font-medium">Belum ada post</p>
                                         <a href="{{ route('admin.posts.create') }}" wire:navigate
-                                            class="mt-2 text-[11px] font-medium text-sage-600 hover:text-sage-700 dark:text-sage-400">
+                                            class="mt-2 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">
                                             Buat post pertama →
                                         </a>
                                     </div>
@@ -302,7 +304,7 @@ new #[Title('Manage Posts')] class extends Component {
                 </table>
             </div>
 
-            <div class="border-t border-stone-100 px-3 py-2.5 text-xs dark:border-stone-800">
+            <div class="border-t border-slate-200/70 dark:border-white/10 px-3 pt-3 mt-2 text-xs">
                 {{ $posts->links('pagination::tailwind') }}
             </div>
         </div>

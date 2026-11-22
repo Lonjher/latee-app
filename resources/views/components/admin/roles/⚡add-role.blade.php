@@ -56,7 +56,7 @@ new class extends Component {
     <flux:modal name="add-role" variant="bare" :closable="false" class="m-auto w-full max-w-2xl p-3 sm:p-4">
         <form
             wire:submit.prevent="createRole"
-            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white shadow-none! dark:bg-stone-900"
+            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white/95 dark:bg-[#070D18]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 shadow-2xl"
         >
             <flux:modal.header
                 icon="plus"
@@ -66,7 +66,7 @@ new class extends Component {
 
             <flux:modal.body>
                 <div x-show="errorMessage" x-cloak x-text="errorMessage"
-                    class="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"></div>
+                    class="mb-3 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 py-2 text-[11px] text-red-700 dark:text-red-300"></div>
 
                 <div class="space-y-3">
                     <flux:input
@@ -80,7 +80,7 @@ new class extends Component {
                     />
 
                     <div>
-                        <label class="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-400">
+                        <label class="mb-1.5 block text-xs font-semibold text-slate-700 dark:text-slate-300">
                             {{ __('Permission') }}
                         </label>
                         <x-permission-matrix

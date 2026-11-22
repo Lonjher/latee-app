@@ -1,2 +1,0 @@
-<div <?php echo e($attributes->class('mx-2 my-0.5 border-t border-stone-100 dark:border-stone-800')); ?>></div>
-<?php /**PATH D:\PUJASERA\latee-app\resources\views/components/action-menu/separator.blade.php ENDPATH**/ ?>

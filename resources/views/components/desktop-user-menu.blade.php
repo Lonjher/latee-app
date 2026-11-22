@@ -13,8 +13,8 @@
                 :initials="auth()->user()->initials()"
             />
             <div class="grid flex-1 text-start text-sm leading-tight">
-                <flux:heading class="truncate">{{ auth()->user()->full_name }}</flux:heading>
-                <flux:text class="truncate">{{ auth()->user()->email }}</flux:text>
+                <flux:heading class="truncate text-slate-900 dark:text-white font-bold">{{ auth()->user()->full_name }}</flux:heading>
+                <flux:text class="truncate text-slate-500 dark:text-slate-400">{{ auth()->user()->email }}</flux:text>
             </div>
         </div>
         <flux:menu.separator />
@@ -28,7 +28,7 @@
                     as="button"
                     type="submit"
                     icon="arrow-right-start-on-rectangle"
-                    class="w-full cursor-pointer"
+                    class="w-full cursor-pointer text-red-600 dark:text-red-400"
                     data-test="logout-button"
                 >
                     {{ __('Log out') }}

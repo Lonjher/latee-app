@@ -54,7 +54,7 @@ new class extends Component {
     >
         <form
             wire:submit.prevent="create"
-            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white shadow-none! dark:bg-stone-900"
+            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white/95 dark:bg-[#070D18]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 shadow-2xl"
         >
             {{-- HEADER --}}
             <flux:modal.header
@@ -70,7 +70,7 @@ new class extends Component {
                     x-show="errorMessage"
                     x-cloak
                     x-text="errorMessage"
-                    class="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
+                    class="mb-3 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 py-2 text-[11px] text-red-700 dark:text-red-300"
                 ></div>
 
                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -161,7 +161,7 @@ new class extends Component {
             {{-- FOOTER --}}
             <flux:modal.footer>
                 <flux:modal.close>
-                    <flux:button type="button" variant="danger">
+                    <flux:button type="button" variant="ghost">
                         {{ __('Batal') }}
                     </flux:button>
                 </flux:modal.close>

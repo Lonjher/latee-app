@@ -74,20 +74,20 @@ new class extends Component {
     >
         <form
             wire:submit.prevent="updateUser"
-            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white shadow-none! dark:bg-stone-900"
+            class="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white/95 dark:bg-[#070D18]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 shadow-2xl"
         >
             {{-- OVERLAY: Loading saat fetch data user --}}
             <div
                 wire:loading
                 wire:target="editUser"
-                class="absolute inset-0 z-50 flex items-center justify-center rounded-3xl bg-white/70 backdrop-blur-sm dark:bg-stone-900/70"
+                class="absolute inset-0 z-50 flex items-center justify-center rounded-3xl bg-white/75 backdrop-blur-sm dark:bg-[#070D18]/80"
             >
-                <div class="flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 shadow-sm dark:border-stone-700 dark:bg-stone-800">
-                    <svg class="size-4 animate-spin text-sage-600 dark:text-sage-400" fill="none" viewBox="0 0 24 24">
+                <div class="flex items-center gap-2 rounded-xl border border-slate-200 bg-white/90 px-3.5 py-2 shadow-sm dark:border-white/10 dark:bg-[#0B1329]">
+                    <svg class="size-4 animate-spin text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V12H4z"></path>
                     </svg>
-                    <span class="text-xs font-medium text-stone-600 dark:text-stone-300">{{ __('Memuat data...') }}</span>
+                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200">{{ __('Memuat data...') }}</span>
                 </div>
             </div>
 
@@ -104,7 +104,7 @@ new class extends Component {
                     x-show="errorMessage"
                     x-cloak
                     x-text="errorMessage"
-                    class="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
+                    class="mb-3 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 py-2 text-[11px] text-red-700 dark:text-red-300"
                 ></div>
 
                 <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2">

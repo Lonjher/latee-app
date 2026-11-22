@@ -44,7 +44,7 @@
             @click.outside="open = false"
             @keydown.escape.window="open = false"
             :style="`position: fixed; top: ${top}px; right: 0.75rem; z-index: 9999;`"
-            class="{{ $width }} origin-top-right overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-lg shadow-black/5 ring-1 ring-black/5 dark:border-stone-800 dark:bg-stone-900 dark:shadow-black/30 dark:ring-stone-700/50"
+            class="{{ $width }} origin-top-right overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-xl shadow-2xl dark:border-white/10 dark:bg-[#050B14]/95 dark:shadow-2xl ring-1 ring-black/5 dark:ring-white/5"
             style="display: none;"
         >
             <div class="space-y-1 p-1.5" @click="open = false">

@@ -53,7 +53,6 @@ class UserForm extends Form
         $this->validate();
 
         $user = User::create([
-            'full_name'         => $this->full_name,
             'email'             => $this->email,
             'password'          => Hash::make($this->password),
             'is_active'         => $this->is_active,
@@ -72,7 +71,6 @@ class UserForm extends Form
         $this->validate();
 
         $data = [
-            'full_name' => $this->full_name,
             'email'     => $this->email,
             'is_active' => $this->is_active,
         ];

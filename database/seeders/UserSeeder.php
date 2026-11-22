@@ -12,19 +12,19 @@ class UserSeeder extends Seeder
     {
         // 2 Editor
         $editors = [
-            ['full_name' => 'Ahmad Fauzi',      'email' => 'editor1@annuqayahlatee.sch.id'],
-            ['full_name' => 'Muhammad Ridwan',  'email' => 'editor2@annuqayahlatee.sch.id'],
+            ['email' => 'editor1@annuqayahlatee.sch.id', 'bio' => 'Editor konten Annuqayah Latee Putra.'],
+            ['email' => 'editor2@annuqayahlatee.sch.id', 'bio' => 'Editor konten Annuqayah Latee Putri.'],
         ];
 
         foreach ($editors as $data) {
             $user = User::firstOrCreate(
                 ['email' => $data['email']],
-                array_merge($data, [
+                [
                     'password'          => Hash::make('password'),
-                    'bio'               => 'Editor konten Annuqayah Latee.',
+                    'bio'               => $data['bio'],
                     'is_active'         => true,
                     'email_verified_at' => now(),
-                ])
+                ]
             );
 
             if (! $user->hasRole('editor')) {
@@ -32,20 +32,21 @@ class UserSeeder extends Seeder
             }
         }
 
+        // 2 Umum / Wali / Tamu
         $users = [
-            ['full_name' => 'Kamiluddin Zafi',      'email' => 'user1@annuqayahlatee.sch.id'],
-            ['full_name' => 'Habibuddin Alawi',  'email' => 'user@annuqayahlatee.sch.id'],
+            ['email' => 'user1@annuqayahlatee.sch.id', 'bio' => 'Wali Santri Annuqayah Latee.'],
+            ['email' => 'user@annuqayahlatee.sch.id',  'bio' => 'Alumni Annuqayah Latee.'],
         ];
 
         foreach ($users as $data) {
             $user = User::firstOrCreate(
                 ['email' => $data['email']],
-                array_merge($data, [
+                [
                     'password'          => Hash::make('password'),
-                    'bio'               => 'User Satri Annuqayah Latee.',
+                    'bio'               => $data['bio'],
                     'is_active'         => true,
                     'email_verified_at' => now(),
-                ])
+                ]
             );
 
             if (! $user->hasRole('user')) {
@@ -53,6 +54,6 @@ class UserSeeder extends Seeder
             }
         }
 
-        $this->command->info('👥 2 user siap.');
+        $this->command->info('👥 2 editor dan 2 user umum siap.');
     }
 }

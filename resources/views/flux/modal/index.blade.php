@@ -39,10 +39,11 @@ $sizeClass = match ($size) {
 
 /**
  * Base card styling — dipakai di default & overflow variant.
- * shadow-none! = paksa override Flux CSS / UA stylesheet.
  */
-$cardStyles = 'bg-white dark:bg-stone-900 '
-    . 'shadow-none! '
+$cardStyles = 'bg-white/95 dark:bg-[#070D18]/95 '
+    . 'border border-slate-200/90 dark:border-white/10 '
+    . 'text-slate-900 dark:text-white '
+    . 'shadow-2xl backdrop-blur-2xl '
     . 'rounded-3xl overflow-hidden';
 
 if ($flyout) {
@@ -61,7 +62,7 @@ if ($flyout) {
             'bare' => '',
         })
         ->add(match ($variant) {
-            default    => 'bg-white dark:bg-stone-900 border-transparent dark:border-stone-800',
+            default    => 'bg-white/95 dark:bg-[#070D18]/95 border-slate-200/90 dark:border-white/10 text-slate-900 dark:text-white backdrop-blur-2xl',
             'floating' => "{$cardStyles}",
             'bare'     => 'bg-transparent',
         });

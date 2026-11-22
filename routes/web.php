@@ -1,56 +1,71 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
+
 // ==========================================
 // RUTE UNTUK LATEE PUTRA
 // ==========================================
 Route::name('latee.')->group(function () {
-    Route::view('programs/latee/pendidikan', 'programs.latee.pendidikan')->name('programs.pendidikan');
-    Route::view('programs/latee/peribadatan', 'programs.latee.peribadatan')->name('programs.peribadatan');
-    Route::view('programs/latee/peminatan', 'programs.latee.peminatan')->name('programs.peminatan');
-    Route::view('programs/latee/publikasi', 'programs.latee.publikasi')->name('programs.publikasi');
-    Route::view('programs/latee/kesehatan', 'programs.latee.kesehatan')->name('programs.kesehatan');
-    Route::view('programs/latee/ketertiban', 'programs.latee.ketertiban')->name('programs.ketertiban');
-    Route::view('programs/latee/infrastruktur', 'programs.latee.infrastruktur')->name('programs.infrastruktur');
-    Route::view('programs/latee/unit', 'programs.latee.unit')->name('programs.unit');
+    Route::get('programs/latee/pendidikan', [ProgramController::class, 'lateePendidikan'])->name('programs.pendidikan');
+    Route::get('programs/latee/peribadatan', [ProgramController::class, 'lateePeribadatan'])->name('programs.peribadatan');
+    Route::get('programs/latee/peminatan', [ProgramController::class, 'lateePeminatan'])->name('programs.peminatan');
+    Route::get('programs/latee/publikasi', [ProgramController::class, 'lateePublikasi'])->name('programs.publikasi');
+    Route::get('programs/latee/kesehatan', [ProgramController::class, 'lateeKesehatan'])->name('programs.kesehatan');
+    Route::get('programs/latee/ketertiban', [ProgramController::class, 'lateeKetertiban'])->name('programs.ketertiban');
+    Route::get('programs/latee/infrastruktur', [ProgramController::class, 'lateeInfrastruktur'])->name('programs.infrastruktur');
+    Route::get('programs/latee/unit', [ProgramController::class, 'lateeUnit'])->name('programs.unit');
 });
+
+// ==========================================
+// RUTE UNTUK LATEE I PUTRI
+// ==========================================
 Route::name('lateei.')->group(function () {
-    Route::view('programs/lateei/pendidikan', 'programs.lateei.pendidikan')->name('programs.pendidikan');
-    Route::view('programs/lateei/peribadatan', 'programs.lateei.peribadatan')->name('programs.peribadatan');
-    Route::view('programs/lateei/peminatan', 'programs.lateei.peminatan')->name('programs.peminatan');
-    Route::view('programs/lateei/publikasi', 'programs.lateei.publikasi')->name('programs.publikasi');
-    Route::view('programs/lateei/kesehatan', 'programs.lateei.kesehatan')->name('programs.kesehatan');
-    Route::view('programs/lateei/ketertiban', 'programs.lateei.ketertiban')->name('programs.ketertiban');
-    Route::view('programs/lateei/infrastruktur', 'programs.lateei.infrastruktur')->name('programs.infrastruktur');
-    Route::view('programs/lateei/unit', 'programs.lateei.unit')->name('programs.unit');
+    Route::get('programs/lateei/pendidikan', [ProgramController::class, 'lateeiPendidikan'])->name('programs.pendidikan');
+    Route::get('programs/lateei/peribadatan', [ProgramController::class, 'lateeiPeribadatan'])->name('programs.peribadatan');
+    Route::get('programs/lateei/peminatan', [ProgramController::class, 'lateeiPeminatan'])->name('programs.peminatan');
+    Route::get('programs/lateei/publikasi', [ProgramController::class, 'lateeiPublikasi'])->name('programs.publikasi');
+    Route::get('programs/lateei/kesehatan', [ProgramController::class, 'lateeiKesehatan'])->name('programs.kesehatan');
+    Route::get('programs/lateei/ketertiban', [ProgramController::class, 'lateeiKetertiban'])->name('programs.ketertiban');
+    Route::get('programs/lateei/infrastruktur', [ProgramController::class, 'lateeiInfrastruktur'])->name('programs.infrastruktur');
+    Route::get('programs/lateei/unit', [ProgramController::class, 'lateeiUnit'])->name('programs.unit');
 });
+
+// ==========================================
+// RUTE UNTUK LATEE II PUTRI
+// ==========================================
 Route::name('lateeii.')->group(function () {
-    Route::view('programs/lateeii/pendidikan', 'programs.lateeii.pendidikan')->name('programs.pendidikan');
-    Route::view('programs/lateeii/peribadatan', 'programs.lateeii.peribadatan')->name('programs.peribadatan');
-    Route::view('programs/lateeii/peminatan', 'programs.lateeii.peminatan')->name('programs.peminatan');
-    Route::view('programs/lateeii/publikasi', 'programs.lateeii.publikasi')->name('programs.publikasi');
-    Route::view('programs/lateeii/kesehatan', 'programs.lateeii.kesehatan')->name('programs.kesehatan');
-    Route::view('programs/lateeii/ketertiban', 'programs.lateeii.ketertiban')->name('programs.ketertiban');
-    Route::view('programs/lateeii/infrastruktur', 'programs.lateeii.infrastruktur')->name('programs.infrastruktur');
-    Route::view('programs/lateeii/tata-busana', 'programs.lateeii.tata-busana')->name('programs.tata-busana');
-    Route::view('programs/lateeii/unit', 'programs.lateeii.unit')->name('programs.unit');
+    Route::get('programs/lateeii/pendidikan', [ProgramController::class, 'lateeiiPendidikan'])->name('programs.pendidikan');
+    Route::get('programs/lateeii/peribadatan', [ProgramController::class, 'lateeiiPeribadatan'])->name('programs.peribadatan');
+    Route::get('programs/lateeii/peminatan', [ProgramController::class, 'lateeiiPeminatan'])->name('programs.peminatan');
+    Route::get('programs/lateeii/publikasi', [ProgramController::class, 'lateeiiPublikasi'])->name('programs.publikasi');
+    Route::get('programs/lateeii/kesehatan', [ProgramController::class, 'lateeiiKesehatan'])->name('programs.kesehatan');
+    Route::get('programs/lateeii/ketertiban', [ProgramController::class, 'lateeiiKetertiban'])->name('programs.ketertiban');
+    Route::get('programs/lateeii/infrastruktur', [ProgramController::class, 'lateeiiInfrastruktur'])->name('programs.infrastruktur');
+    Route::get('programs/lateeii/tata-busana', [ProgramController::class, 'lateeiiTataBusana'])->name('programs.tata-busana');
+    Route::get('programs/lateeii/unit', [ProgramController::class, 'lateeiiUnit'])->name('programs.unit');
 });
-Route::view('profile', 'profile')->name('profile');
-Route::view('pendaftaran', 'pendaftaran')->name('pendaftaran');
-Route::view('contact', 'contact')->name('contact');
+
+Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('pendaftaran', [RegistrationController::class, 'index'])->name('pendaftaran');
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::view('blogs/show', 'blogs.show')->name('blogs.show');
 Route::view('blogs/index', 'blogs.index')->name('blogs.index');
 
 Route::middleware(['role:admin'])->group(function () {
     Route::livewire('admin/manage-roles', 'admin.manage-roles')->name('admin.manage-roles');
     Route::livewire('admin/manage-users', 'admin.manage-users')->name('admin.manage-users');
-
+    Route::livewire('admin/manage-settings', 'admin.manage-settings')->name('admin.manage-settings');
 
     Route::livewire('admin/manage-posts', 'admin.manage-posts')->name('admin.manage-posts');
     Route::livewire('admin/posts/create', 'admin.posts.create')->name('admin.posts.create');

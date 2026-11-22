@@ -90,43 +90,45 @@ new #[Title('Manage Users')] class extends Component {
 };
 ?>
 
-<div>
-    <x-page-header title="Kelola Pengguna" leading="Kelola Akun & Hak Akses Pengguna" />
+<div class="space-y-4 w-full">
+    <div class="glass-card relative overflow-hidden rounded-2xl p-4 sm:p-5">
+        <x-page-header title="Kelola Pengguna" leading="Kelola akun pengguna, penugasan peran, dan hak akses sistem Annuqayah Latee" />
+    </div>
 
-    <div class="mx-auto mt-2 space-y-2">
+    <div class="space-y-4">
 
         {{-- FLASH --}}
         @if (session('success'))
             <div
-                class="bg-sage-50 dark:bg-sage-950 border-sage-200 dark:border-sage-800 text-sage-700 dark:text-sage-300 flex items-center gap-2.5 rounded-xl border px-3 py-2 text-xs">
-                <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="bg-emerald-500/10 border-emerald-500/20 text-emerald-700 dark:text-emerald-300 flex items-center gap-2.5 rounded-xl border px-3.5 py-2.5 text-xs backdrop-blur-md">
+                <svg class="h-4 w-4 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                {{ session('success') }}
+                <span class="font-semibold">{{ session('success') }}</span>
             </div>
         @endif
         @if (session('error'))
             <div
-                class="flex items-center gap-2.5 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">
-                <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="flex items-center gap-2.5 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 py-2.5 text-xs text-red-700 dark:text-red-300 backdrop-blur-md">
+                <svg class="h-4 w-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                 </svg>
-                {{ session('error') }}
+                <span class="font-semibold">{{ session('error') }}</span>
             </div>
         @endif
 
         {{-- FILTER BAR --}}
-        <div class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 dark:border-stone-800 dark:bg-stone-900">
-            <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div class="glass-card rounded-2xl p-3 sm:p-4">
+            <div class="flex flex-col gap-2.5 sm:flex-row sm:items-center">
 
-                <div class="flex w-full gap-2 sm:w-[30%]">
+                <div class="flex w-full gap-2 sm:w-[35%]">
                     <flux:input size="xs" icon:leading="magnifying-glass" wire:model.live.debounce.300ms="search"
                         placeholder="Cari nama atau email…" class="flex-1" />
 
                     @if ($search || $roleFilter || $statusFilter)
                         <button wire:click="clearFilters" title="Reset filter"
-                            class="grid size-9 shrink-0 place-items-center rounded-lg border border-stone-200 bg-white text-stone-500 transition hover:bg-stone-50 hover:text-stone-800 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:hover:bg-stone-700 dark:hover:text-stone-100">
+                            class="grid size-9 shrink-0 place-items-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-500 transition hover:bg-white hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-emerald-400 cursor-pointer shadow-xs">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -135,7 +137,7 @@ new #[Title('Manage Users')] class extends Component {
                     @endif
                 </div>
 
-                <div class="grid w-full grid-cols-3 gap-2 sm:ms-auto sm:w-[30%]">
+                <div class="grid w-full grid-cols-3 gap-2 sm:ms-auto sm:w-[35%]">
                     <flux:select wire:model.live="roleFilter" class="w-full" size="xs">
                         <flux:select.option value="">Semua Peran</flux:select.option>
                         @foreach ($roles as $r)
@@ -151,20 +153,19 @@ new #[Title('Manage Users')] class extends Component {
 
                     <flux:button x-data size="xs" x-on:click="$dispatch('add-user-modal')" variant="primary"
                         class="w-full">
-                        Tambah
+                        + Tambah
                     </flux:button>
                 </div>
             </div>
         </div>
 
-        {{-- TABLE --}}
-        <div
-            class="overflow-hidden rounded-xl border border-stone-200 bg-white px-3 dark:border-stone-800 dark:bg-stone-900">
-            <div class="flex items-center justify-between border-b border-stone-100 py-2 dark:border-stone-800">
-                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400">
+        {{-- TABLE CARD --}}
+        <div class="glass-card rounded-2xl p-3 sm:p-4 overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-200/70 dark:border-white/10 pb-2.5 mb-2.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     {{ $users->total() }} {{ __('akun ditemukan') }}
                 </span>
-                <div wire:loading class="text-sage-600 dark:text-sage-400 flex items-center gap-1 text-[11px]">
+                <div wire:loading class="text-emerald-600 dark:text-emerald-400 flex items-center gap-1 text-[11px] font-semibold">
                     <svg class="h-3 w-3 animate-spin" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                             stroke-width="4" />
@@ -174,86 +175,84 @@ new #[Title('Manage Users')] class extends Component {
                 </div>
             </div>
 
-            <div class="overflow-x-auto rounded-xl border bg-white shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <div class="overflow-x-auto rounded-xl border border-slate-200/70 dark:border-white/10">
                 <table x-data @user-updated.window="$wire.$refresh()" class="w-full border-collapse text-left text-xs">
                     <thead>
                         <tr
-                            class="border-b border-stone-200 bg-stone-50 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-400">
-                            <th class="w-8 px-2.5 py-1.5 text-center">#</th>
-                            <th class="px-2.5 py-1.5">{{ __('Pengguna') }}</th>
-                            <th class="px-2.5 py-1.5">{{ __('Peran') }}</th>
-                            <th class="w-20 px-2.5 py-1.5 text-center">{{ __('Status') }}</th>
-                            <th class="px-2.5 py-1.5">{{ __('Bergabung') }}</th>
-                            <th class="w-14 px-2.5 py-1.5 text-right">{{ __('Aksi') }}</th>
+                            class="border-b border-slate-200/80 bg-slate-100/90 dark:border-white/10 dark:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                            <th class="w-8 px-3 py-2 text-center">#</th>
+                            <th class="px-3 py-2">{{ __('Pengguna') }}</th>
+                            <th class="px-3 py-2">{{ __('Peran') }}</th>
+                            <th class="w-20 px-3 py-2 text-center">{{ __('Status') }}</th>
+                            <th class="px-3 py-2">{{ __('Bergabung') }}</th>
+                            <th class="w-14 px-3 py-2 text-right">{{ __('Aksi') }}</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-stone-100 dark:divide-stone-800/60">
+                    <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-[11px]">
                         @forelse ($users as $user)
                             @php
                                 $primaryRole = $user->roles->first()?->name ?? 'user';
                                 $roleClass = match ($primaryRole) {
-                                    'admin' => 'bg-sage-50 text-sage-700 dark:bg-sage-950/40 dark:text-sage-400',
-                                    'editor'
-                                        => 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400',
-                                    'pengasuh'
-                                        => 'bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-400',
-                                    default => 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400',
+                                    'admin' => 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25',
+                                    'editor' => 'bg-blue-500/15 text-blue-700 dark:text-blue-300 border border-blue-500/25',
+                                    'pengasuh' => 'bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/25',
+                                    default => 'bg-slate-200/60 text-slate-700 dark:bg-white/10 dark:text-slate-300 border border-slate-300/40 dark:border-white/10',
                                 };
                             @endphp
 
-                            <tr class="group transition-colors hover:bg-stone-50 dark:hover:bg-stone-800/30">
-                                <td class="px-2.5 py-1.5 text-center text-xs text-stone-400 dark:text-stone-600">
+                            <tr class="group transition-colors hover:bg-emerald-500/5">
+                                <td class="px-3 py-2 text-center text-xs text-slate-400 dark:text-slate-500">
                                     {{ $loop->iteration + ($users->currentPage() - 1) * $users->perPage() }}
                                 </td>
 
-                                <td class="px-2.5 py-1.5">
-                                    <div class="flex max-w-52 items-center gap-2 sm:max-w-md">
+                                <td class="px-3 py-2">
+                                    <div class="flex max-w-52 items-center gap-2.5 sm:max-w-md">
                                         <div
-                                            class="bg-sage-100 dark:bg-sage-900/60 text-sage-700 dark:text-sage-400 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold uppercase">
+                                            class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/25 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-extrabold uppercase">
                                             {{ mb_substr($user->full_name, 0, 2) }}
                                         </div>
                                         <div class="truncate">
                                             <div class="flex items-center gap-1.5">
                                                 <span
-                                                    class="truncate text-xs font-medium text-stone-800 dark:text-stone-200">
+                                                    class="truncate text-xs font-bold text-slate-900 dark:text-white">
                                                     {{ $user->full_name }}
                                                 </span>
                                                 @if ($user->id === auth()->id())
                                                     <span
-                                                        class="shrink-0 rounded-full bg-stone-100 px-1.5 py-0.5 text-[10px] font-semibold text-stone-500 dark:bg-stone-800 dark:text-stone-400">Anda</span>
+                                                        class="shrink-0 rounded-full bg-emerald-500/15 border border-emerald-500/20 px-1.5 py-0.2 text-[9px] font-bold text-emerald-700 dark:text-emerald-300">Anda</span>
                                                 @endif
                                             </div>
-                                            <div class="truncate text-[11px] text-stone-500 dark:text-stone-400">
+                                            <div class="truncate text-[10px] text-slate-500 dark:text-slate-400">
                                                 {{ $user->email }}
                                             </div>
                                         </div>
                                     </div>
                                 </td>
 
-                                <td class="px-2.5 py-1.5">
+                                <td class="px-3 py-2">
                                     <span
-                                        class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold {{ $roleClass }}">
+                                        class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold {{ $roleClass }}">
                                         {{ ucfirst($primaryRole) }}
                                     </span>
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-center">
+                                <td class="px-3 py-2 text-center">
                                     @if ($user->is_active)
                                         <span
-                                            class="inline-flex items-center rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-semibold text-green-700 dark:bg-green-950/40 dark:text-green-400">{{ __('Active') }}</span>
+                                            class="inline-flex items-center rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">{{ __('Active') }}</span>
                                     @else
                                         <span
-                                            class="inline-flex items-center rounded-full bg-stone-100 px-2 py-0.5 text-[11px] font-semibold text-stone-600 dark:bg-stone-800 dark:text-stone-400">{{ __('Inactive') }}</span>
+                                            class="inline-flex items-center rounded-full bg-slate-200/60 px-2 py-0.5 text-[10px] font-bold text-slate-600 dark:bg-white/10 dark:text-slate-400 border border-slate-300/40 dark:border-white/10">{{ __('Inactive') }}</span>
                                     @endif
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-[11px] text-stone-500 dark:text-stone-400">
+                                <td class="px-3 py-2 text-[10px] text-slate-500 dark:text-slate-400">
                                     {{ $user->created_at?->format('d M Y') ?? '—' }}
                                 </td>
 
-                                <td class="px-2.5 py-1.5 text-right">
+                                <td class="px-3 py-2 text-right">
                                     <x-action-menu>
-                                        <x-action-menu.item icon="pencil-square" color="sage"
+                                        <x-action-menu.item icon="pencil-square" color="emerald"
                                             x-on:click="$dispatch('edit-user-modal', { userId: {{ $user->id }} })">
                                             Edit
                                         </x-action-menu.item>
@@ -274,8 +273,8 @@ new #[Title('Manage Users')] class extends Component {
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-2.5 py-10 text-center">
-                                    <div class="flex flex-col items-center gap-1.5 text-stone-400">
+                                <td colspan="6" class="px-3 py-10 text-center">
+                                    <div class="flex flex-col items-center gap-1.5 text-slate-400">
                                         <p class="text-xs font-medium">{{ __('Tidak ada pengguna ditemukan') }}</p>
                                     </div>
                                 </td>
@@ -285,7 +284,7 @@ new #[Title('Manage Users')] class extends Component {
                 </table>
             </div>
 
-            <div class="border-t border-stone-100 px-3 py-2.5 text-xs dark:border-stone-800">
+            <div class="border-t border-slate-200/70 dark:border-white/10 px-3 pt-3 mt-2 text-xs">
                 {{ $users->links('pagination::tailwind') }}
             </div>
         </div>

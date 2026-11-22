@@ -20,20 +20,20 @@
 
         <div class="min-w-0">
             {{-- Judul: minimal 18px, responsif naik ke 20px --}}
-            <h1 class="text-lg font-bold tracking-tight text-stone-800 dark:text-stone-100 sm:text-xl">
+            <h1 class="text-lg font-black tracking-tight text-slate-900 dark:text-white sm:text-xl">
                 {{ $title }}
             </h1>
 
             {{-- Leading: 14px (text-sm) --}}
             @if ($leading)
-                <p class="mt-1 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+                <p class="mt-1 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
                     {{ $leading }}
                 </p>
             @endif
 
             {{-- Slot tambahan (badge, breadcrumb, dsb) — minimal 14px --}}
             @if (! $slot->isEmpty())
-                <div class="mt-1.5 text-sm text-stone-500 dark:text-stone-400">
+                <div class="mt-1.5 text-sm text-slate-500 dark:text-slate-400">
                     {{ $slot }}
                 </div>
             @endif

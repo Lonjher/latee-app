@@ -4,21 +4,21 @@
 
     <main>
         <!-- Page Hero -->
-        <section class="relative w-full py-8 sm:py-10 md:py-16 px-4 md:px-6 overflow-hidden flex justify-center bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-            <div class="relative w-full max-w-[1400px] min-h-[280px] sm:min-h-[320px] md:min-h-[350px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex items-center shadow-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 bg-texture-noise">
+        <section class="relative w-full py-8 sm:py-10 md:py-16 px-4 md:px-6 overflow-hidden flex justify-center">
+            {{-- Ambient Aurora Glow Orbs --}}
+            <div class="glow-hero-emerald w-[500px] h-[500px] -top-20 -left-20 rounded-full"></div>
+            <div class="glow-hero-sapphire w-[500px] h-[500px] -bottom-20 -right-20 rounded-full"></div>
+            <div class="relative w-full max-w-[1400px] min-h-[280px] sm:min-h-[320px] md:min-h-[350px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex items-center glass-card z-10">
                 <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                    <div class="absolute inset-0 bg-slate-50/50 dark:bg-slate-950/60"></div>
-                    <div class="absolute top-0 -left-20 w-[400px] h-[400px] bg-brand-300/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-40 animate-pulse-glow dark:bg-brand-500/20"></div>
-                    <div class="absolute -bottom-40 right-0 w-[400px] h-[400px] bg-teal-300/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-40 animate-pulse-glow dark:bg-teal-500/15" style="animation-delay: 2s;"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent dark:from-slate-900/90 dark:via-slate-900/60"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent dark:from-[#050B14]/70 dark:via-[#050B14]/40 dark:to-transparent"></div>
                 </div>
                 <div class="relative z-30 w-full px-6 sm:px-8 md:px-16 py-10 sm:py-12 text-center">
                     <div class="reveal inline-flex items-center justify-center gap-3 mb-4">
-                        <span class="text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.2em] text-brand-700 dark:text-brand-300 uppercase bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm border border-brand-200 dark:border-brand-700">Program Peribadatan</span>
+                        <span class="aurora-badge inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-md">Program Peribadatan</span>
                     </div>
                     <h1 class="reveal delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1]">
                         Menjaga Istikamah<br />
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-teal-600 dark:from-brand-300 dark:via-brand-400 dark:to-teal-300 animate-gradient-x text-gradient-animated">Ibadah & Dzikir</span>
+                        <span class="aurora-gradient-text animate-gradient-x text-gradient-animated">Ibadah & Dzikir</span>
                     </h1>
                     <p class="reveal delay-200 text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed">"Tirakat santri Latee adalah hadiran." Program peribadatan dirancang untuk membentuk karakter santri yang istikamah dalam salat berjamaah, tilawah, dan amaliah ubudiyah sehari-hari.</p>
                 </div>
@@ -26,14 +26,14 @@
         </section>
 
         <!-- Hadiran 5 Waktu -->
-        <section class="py-16 md:py-20 bg-white dark:bg-slate-900 transition-colors duration-300" id="hadiran">
+        <section class="relative py-16 md:py-20 overflow-hidden" id="hadiran">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="reveal mb-8">
-                    <span class="text-[10px] md:text-xs font-bold tracking-widest text-brand-700 dark:text-brand-300 uppercase bg-brand-50 dark:bg-brand-900/30 px-4 py-2 rounded-full border border-brand-100 dark:border-brand-800">Ubudiyah</span>
+                    <span class="aurora-badge inline-block text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full">Ubudiyah</span>
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-4">Hadiran 5 Waktu</h2>
                 </div>
 
-                <div class="reveal delay-100 mb-10 md:mb-12 overflow-hidden rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 h-56 sm:h-72 md:h-96 relative group">
+                <div class="reveal delay-100 mb-10 md:mb-12 overflow-hidden rounded-3xl shadow-lg border border-slate-200/80 dark:border-white/10 h-56 sm:h-72 md:h-96 relative group">
                     <img src="https://images.unsplash.com/photo-1584286595398-a59f21d313f5?q=80&w=1200&auto=format&fit=crop" alt="Santri Membaca Al-Quran" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-5 md:p-10">
                         <p class="text-white text-xs md:text-base font-semibold max-w-2xl leading-relaxed">"Tirakat santri Latee adalah hadiran" — kegiatan salat berjamaah dan tilawah menjadi ruh kehidupan pesantren.</p>
@@ -42,22 +42,22 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                     <div class="reveal-left space-y-6">
-                        <div class="bg-brand-600 dark:bg-brand-700 text-white rounded-3xl p-6 md:p-8 shadow-xl shadow-brand-500/20 dark:shadow-brand-900/40">
+                        <div class="bg-gradient-to-br from-[#065F46] via-[#047857] to-[#0F172A] border border-emerald-400/30 text-white rounded-3xl p-6 md:p-8 shadow-xl">
                             <h3 class="text-lg md:text-xl font-bold mb-3">Tirakat Santri Latee</h3>
                             <p class="text-xs md:text-sm text-brand-50 leading-relaxed">Semenjak dulu, hal yang selalu ditekankan oleh mendiang Alm. KH. Ahmad Basyir Abdullah Sajjad—dan hal ini yang paling utama—adalah istikamah hadiran. "Tirakat santri Latee adalah hadiran" dawuh beliau.</p>
                         </div>
-                        <div class="bg-slate-50/70 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
+                        <div class="glass-card rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
                             <h3 class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-3">Pengertian Hadiran</h3>
                             <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Hadiran adalah sebutan santri bagi kegiatan salat berjamaah lima waktu: Zuhur, Ashar, Maghrib, Isya', dan Shubuh. Setiap santri wajib mengikuti salat berjamaah lima waktu di musala.</p>
                         </div>
                     </div>
                     <div class="reveal-right space-y-6">
-                        <div class="bg-slate-50/70 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
+                        <div class="glass-card rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
                             <h3 class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-3">Pelaksanaan</h3>
                             <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Salat berjamaah ini diimami oleh dewan pengasuh, kecuali berhalangan maka diwakilkan oleh pengurus.</p>
                             <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Karena keterbatasan muatan musala yang belum dapat menampung seluruh santri, maka hadiran juga dilaksanakan di 6 lembaga. Jika masih tidak cukup, dilaksanakan di blok masing-masing dengan syarat tetap berjamaah.</p>
                         </div>
-                        <div class="bg-slate-50/70 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
+                        <div class="glass-card rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300">
                             <h3 class="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-3">Tujuan</h3>
                             <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Menanamkan kedisiplinan, mempererat ukhuwah, dan menjaga keberkahan ilmu melalui salat berjamaah tepat waktu.</p>
                         </div>
@@ -70,7 +70,7 @@
         <section class="py-16 md:py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300" id="yasin-tahlil">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="reveal mb-10 md:mb-12 text-center">
-                    <span class="text-[10px] md:text-xs font-bold tracking-widest text-brand-700 dark:text-brand-300 uppercase bg-brand-50 dark:bg-brand-900/30 px-4 py-2 rounded-full border border-brand-100 dark:border-brand-800">Amaliah</span>
+                    <span class="aurora-badge inline-block text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full">Amaliah</span>
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-4">Pembacaan Yasin & Tahlil</h2>
                     <p class="text-slate-500 dark:text-slate-400 text-xs md:text-sm max-w-xl mx-auto mt-2">Kegiatan mingguan yang menjadi bagian tak terpisahkan dari budaya ubudiyah santri.</p>
                 </div>
@@ -111,10 +111,10 @@
         </section>
 
         <!-- Pembacaan Shalawat Nabi -->
-        <section class="py-16 md:py-20 bg-white dark:bg-slate-900 transition-colors duration-300" id="shalawat">
+        <section class="relative py-16 md:py-20 overflow-hidden" id="shalawat">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="reveal mb-10 md:mb-12">
-                    <span class="text-[10px] md:text-xs font-bold tracking-widest text-brand-700 dark:text-brand-300 uppercase bg-brand-50 dark:bg-brand-900/30 px-4 py-2 rounded-full border border-brand-100 dark:border-brand-800">Shalawat</span>
+                    <span class="aurora-badge inline-block text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full">Shalawat</span>
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-4">Pembacaan Shalawat Nabi</h2>
                 </div>
 
@@ -139,7 +139,7 @@
         <section class="py-16 md:py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300" id="program-tambahan">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="reveal mb-10 md:mb-12 text-center">
-                    <span class="text-[10px] md:text-xs font-bold tracking-widest text-brand-700 dark:text-brand-300 uppercase bg-brand-50 dark:bg-brand-900/30 px-4 py-2 rounded-full border border-brand-100 dark:border-brand-800">Program Pendukung</span>
+                    <span class="aurora-badge inline-block text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full">Program Pendukung</span>
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-4">Amaliah Harian & Mingguan</h2>
                     <p class="text-slate-500 dark:text-slate-400 text-xs md:text-sm max-w-xl mx-auto mt-2">Rangkaian amaliah yang menghiasi hari-hari santri di kompleks Latee II Putri.</p>
                 </div>
